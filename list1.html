@@ -1,0 +1,67 @@
+<template>
+    <lightning-card>
+
+        <lightning-layout-item flexibility="auto" padding="horizontal-small">
+            <div class="slds-align_absolute-center" > <lightning-button-icon variant="brand" icon-name="utility:refresh"   alternative-text="preview"  title="refresh" onclick={refresComponentl}></lightning-button-icon><br> 
+
+          </div>
+          <div class="slds-align_absolute-right" >
+            <lightning-button-icon  variant="brand" icon-name="utility:new"   alternative-text="create new Record"   title="New " onclick={CreateNewRecordNev}></lightning-button-icon>
+          </div>
+           
+             
+        <template if:true={Opportunities}>
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered ">
+                <thead>
+                    <tr>
+                        <th>
+                             Name
+                        </th>
+                        <th>
+                            Amount
+                        </th>
+                       
+                        <th>
+                            Edit
+                        </th>
+                        <th>
+                            Delete
+                        </th>
+                    </tr>
+                </thead>
+                 <tbody>
+                     <template for:each={Opportunities} for:item="KeyItem">
+                        <tr key={KeyItem.Id}>
+                         <td>
+                             {KeyItem.Name}
+                         </td>
+                         <td>
+                             {KeyItem.Amount}
+                         </td>
+                         
+                        <td>
+                            <div >  
+                            <lightning-button-icon  icon-name="utility:edit" data-id={KeyItem.Id}  alternative-text="Edit" class="slds-m-left_xx-small" title="Edit Record" onclick={EditRecord1}></lightning-button-icon>
+                            
+                            </div>
+                            
+                        </td>
+                        <td>    
+                            <div>  
+                            <lightning-button-icon   icon-name="utility:delete"  onclick={DeleteRecord}  alternative-text="Delete" data-recordid={KeyItem.Id}  class="slds-m-left_xx-small"></lightning-button-icon>
+                              
+                            </div>
+                           
+                        </td>
+                     </tr> 
+                     </template>
+                     
+                 </tbody>
+                
+    
+            </table>
+        </template>
+    </lightning-layout-item>
+    </lightning-card>
+    
+</template>
